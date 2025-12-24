@@ -1,0 +1,28 @@
+.btn {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent, #0070f3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #0051cc;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .btn {
+    width: auto;
+  }
+}
+

@@ -1,0 +1,35 @@
+.wrap {
+  max-width: 520px;
+  margin: 24px auto;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+}
+
+.title {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+}
+
+.subtitle {
+  margin: 0 0 14px 0;
+  opacity: 0.85;
+}
+
+.registerLink {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-secondary, #666);
+}
+
+.registerLink a {
+  color: var(--accent, #0070f3);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.registerLink a:hover {
+  text-decoration: underline;
+}

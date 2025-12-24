@@ -1,0 +1,39 @@
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary, #666);
+  margin-bottom: 2rem;
+}
+
+.error {
+  padding: 2rem;
+  text-align: center;
+  background: #fee;
+  color: #c00;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .wrap {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+

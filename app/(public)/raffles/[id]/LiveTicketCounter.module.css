@@ -1,0 +1,72 @@
+.counter {
+  padding: 1.5rem;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.counterHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.counterLabel {
+  font-size: 0.9375rem;
+  color: var(--text-secondary, #666);
+}
+
+.counterValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent, #0070f3);
+}
+
+.counterTotal {
+  font-size: 1.25rem;
+  color: var(--text-secondary, #666);
+}
+
+.liveIndicator {
+  color: #10b981;
+  font-size: 0.75rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-tertiary, #e5e5e5);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent, #0070f3) 0%, #0051cc 100%);
+  transition: width 0.5s ease-out;
+}
+
+.remaining {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666);
+  text-align: center;
+}
+
+.remaining strong {
+  color: var(--text-primary, #1a1a1a);
+  font-weight: 600;
+}
+

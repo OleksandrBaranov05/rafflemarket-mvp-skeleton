@@ -1,0 +1,70 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-card, #fff);
+  color: var(--text-primary, #1a1a1a);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent, #0070f3);
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+}
+
+.error {
+  font-size: 0.875rem;
+  color: #e00;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  padding: 0.875rem;
+  background: var(--accent, #0070f3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #0051cc;
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btnRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+

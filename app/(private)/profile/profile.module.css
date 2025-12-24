@@ -1,0 +1,28 @@
+.wrap {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary, #666);
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding: 0 2rem;
+  }
+}
+

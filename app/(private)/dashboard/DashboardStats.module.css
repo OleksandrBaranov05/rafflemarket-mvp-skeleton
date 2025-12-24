@@ -1,0 +1,61 @@
+.wrap {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-card, #fff);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  padding: 1.25rem;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.statValue.fee {
+  color: #ef4444;
+}
+
+.statValue.net {
+  color: #10b981;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .statValue {
+    font-size: 1.75rem;
+  }
+}
+

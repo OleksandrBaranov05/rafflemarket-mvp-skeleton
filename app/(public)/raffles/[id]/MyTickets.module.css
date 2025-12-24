@@ -1,0 +1,59 @@
+.wrap {
+  padding: 1.5rem;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.count {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666);
+  margin: 0;
+}
+
+.ticketNumbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ticketNumber {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-card, #fff);
+  border: 1px solid var(--border, #ddd);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.ticketNumber.winner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 700;
+  border-color: transparent;
+}
+
+.winnerMessage {
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+

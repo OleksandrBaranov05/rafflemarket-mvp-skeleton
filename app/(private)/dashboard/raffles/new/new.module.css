@@ -1,0 +1,24 @@
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .wrap {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+

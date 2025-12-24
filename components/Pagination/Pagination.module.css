@@ -1,0 +1,92 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pageLink {
+  padding: 0.625rem 1rem;
+  background: var(--bg-card, #fff);
+  color: var(--text-primary, #1a1a1a);
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.pageLink:hover:not(.disabled) {
+  background: var(--bg-secondary, #f5f5f5);
+  border-color: var(--accent, #0070f3);
+  color: var(--accent, #0070f3);
+}
+
+.pageLink.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pageNumber {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card, #fff);
+  color: var(--text-primary, #1a1a1a);
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+
+.pageNumber:hover:not(.active) {
+  background: var(--bg-secondary, #f5f5f5);
+  border-color: var(--accent, #0070f3);
+  color: var(--accent, #0070f3);
+}
+
+.pageNumber.active {
+  background: var(--accent, #0070f3);
+  color: white;
+  border-color: var(--accent, #0070f3);
+  cursor: default;
+}
+
+.ellipsis {
+  padding: 0 0.5rem;
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .pagination {
+    gap: 0.25rem;
+  }
+
+  .pageLink {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .pageNumber {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.875rem;
+  }
+}
+
