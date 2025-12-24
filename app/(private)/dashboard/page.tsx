@@ -1,15 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
 import { getSession } from "@/lib/auth/session";
+import { generatePageMetadata } from "@/lib/metadata/generatePageMetadata";
 import { mockDb } from "@/lib/store/mockDb";
 import styles from "./dashboard.module.css";
 import { CreateRaffleButton } from "./CreateRaffleButton";
 import { DashboardStats } from "./DashboardStats";
 import { Pagination } from "@/components/Pagination/Pagination";
+import { DashboardRaffleCard } from "@/components/DashboardRaffleCard/DashboardRaffleCard";
 
 const ITEMS_PER_PAGE = 6;
 
 type SearchParams = Promise<{ page?: string }>;
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "Мій кабінет",
+  description: "Керування своїми лотами та перегляд статистики",
+});
 
 async function getMyRaffles(userId: string, page: number = 1) {
   const allRaffles = mockDb.raffles.findBySeller(userId);
@@ -94,7 +102,7 @@ export default async function DashboardPage({
             </p>
           </div>
         </div>
-        {(session.user.role === "seller" || session.user.role === "admin") && (
+        {(session.user.canSell === true || session.user.role === "admin") && (
           <CreateRaffleButton />
         )}
       </div>
@@ -113,7 +121,7 @@ export default async function DashboardPage({
         </Link>
       </div>
 
-      {(session.user.role === "seller" || session.user.role === "admin") && (
+      {(session.user.canSell === true || session.user.role === "admin") && (
         <DashboardStats userId={session.user.id} />
       )}
 
@@ -136,40 +144,7 @@ export default async function DashboardPage({
         ) : (
           <div className={styles.grid}>
             {myRaffles.map((raffle) => (
-              <Link key={raffle.id} href={`/raffles/${raffle.id}`} className={styles.card}>
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={raffle.imageUrl}
-                    alt={raffle.title}
-                    fill
-                    className={styles.image}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className={styles.badge}>{getStatusText(raffle.status)}</div>
-                </div>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{raffle.title}</h3>
-                  <div className={styles.cardStats}>
-                    <span>
-                      {raffle.ticketsSold}/{raffle.totalTickets} квитків
-                    </span>
-                    <div className={styles.priceInfo}>
-                      <span className={styles.price}>{raffle.ticketPrice} ₴</span>
-                      <span className={styles.priceNote}>за квиток</span>
-                    </div>
-                  </div>
-                  <div className={styles.totalPriceInfo}>
-                    <span className={styles.totalPriceLabel}>Загальна вартість:</span>
-                    <span className={styles.totalPrice}>{(raffle.totalTickets * raffle.ticketPrice).toLocaleString('uk-UA')} ₴</span>
-                  </div>
-                  <div className={styles.progress}>
-                    <div
-                      className={styles.progressBar}
-                      style={{ width: `${(raffle.ticketsSold / raffle.totalTickets) * 100}%` }}
-                    />
-                  </div>
-                </div>
-              </Link>
+              <DashboardRaffleCard key={raffle.id} raffle={raffle} userId={session.user.id} />
             ))}
           </div>
         )}

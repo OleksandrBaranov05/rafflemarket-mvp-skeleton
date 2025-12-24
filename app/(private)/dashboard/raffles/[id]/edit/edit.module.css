@@ -1,0 +1,23 @@
+.wrap {
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  color: var(--text-primary, #1a1a1a);
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+}
+

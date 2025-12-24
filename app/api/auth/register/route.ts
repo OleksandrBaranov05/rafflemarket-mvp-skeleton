@@ -35,18 +35,22 @@ export async function POST(req: Request) {
         role: newUser.role,
         name: newUser.name,
         avatarUrl: newUser.avatarUrl,
+        canSell: newUser.canSell,
+        balance: newUser.balance,
       },
     });
 
     const res = NextResponse.json({
       ok: true as const,
-      user: {
+        user: {
         id: newUser.id,
         email: newUser.email,
         role: newUser.role,
         name: newUser.name,
         avatarUrl: newUser.avatarUrl,
-      },
+        canSell: newUser.canSell,
+        balance: newUser.balance,
+        },
     });
     res.cookies.set(sessionCookieOptions.name, cookieValue, sessionCookieOptions);
     return res;

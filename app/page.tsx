@@ -1,32 +1,28 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Metadata } from "next";
+import { HeroBlock } from "@/components/HeroBlock/HeroBlock";
+import { FeaturedLotsBlock } from "@/components/FeaturedLotsBlock/FeaturedLotsBlock";
+import { WinnersBlock } from "@/components/WinnersBlock/WinnersBlock";
+import { CreateRaffleLink } from "@/components/CreateRaffleLink/CreateRaffleLink";
+import { generatePageMetadata } from "@/lib/metadata/generatePageMetadata";
 import styles from "./home.module.css";
+
+export const metadata: Metadata = generatePageMetadata({
+  title: "Головна",
+  description:
+    "Маркетплейс публічних розіграшів реальних товарів. Створюйте лоти, купуйте квитки та вигравайте призи!",
+});
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            Marketplace розіграшів
-            <span className={styles.highlight}> реальних товарів</span>
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Прозорі правила. Реальні лоти. Переможець визначається випадково після продажу всіх квитків.
-          </p>
-          <div className={styles.heroActions}>
-            <Link href="/raffles" className={styles.primaryBtn}>
-              Переглянути каталог
-            </Link>
-            <Link href="/login" className={styles.secondaryBtn}>
-              Увійти
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section з пошуком */}
+      <HeroBlock />
 
-      {/* Features Section */}
+      {/* Featured Lots Section */}
+      <FeaturedLotsBlock />
+
+      {/* How It Works Section */}
       <section className={styles.features}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Як це працює?</h2>
@@ -63,6 +59,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Winners Section */}
+      <WinnersBlock />
+
       {/* CTA Section */}
       <section className={styles.cta}>
         <div className={styles.container}>
@@ -75,9 +74,9 @@ export default function HomePage() {
               <Link href="/raffles" className={styles.ctaPrimaryBtn}>
                 Переглянути лоти
               </Link>
-              <Link href="/login" className={styles.ctaSecondaryBtn}>
+              <CreateRaffleLink className={styles.ctaSecondaryBtn}>
                 Створити лот
-              </Link>
+              </CreateRaffleLink>
             </div>
           </div>
         </div>

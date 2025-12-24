@@ -1,7 +1,7 @@
 import { http } from "@/lib/utils/http";
 
 export type MeResponse =
-  | { user: { id: string; email: string; role: "user" | "seller" | "admin"; name?: string; avatarUrl?: string } }
+  | { user: { id: string; email: string; role: "user" | "seller" | "admin"; name?: string; avatarUrl?: string; canSell?: boolean; balance?: number } }
   | { user: null };
 
 export function me() {

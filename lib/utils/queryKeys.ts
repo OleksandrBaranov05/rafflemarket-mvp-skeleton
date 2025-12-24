@@ -3,8 +3,8 @@ export const queryKeys = {
     me: () => ["auth", "me"] as const,
   },
   raffles: {
-    all: () => ["raffles"] as const,
-    detail: (id: string) => ["raffles", id] as const,
+    list: (searchParams?: string) => ["raffles", "list", searchParams || ""] as const,
+    detail: (id: string) => ["raffles", "detail", id] as const,
     bySeller: (sellerId: string) => ["raffles", "seller", sellerId] as const,
   },
   tickets: {

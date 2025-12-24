@@ -247,3 +247,53 @@
   }
 }
 
+.sellerSection {
+  padding: 1.5rem;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 8px;
+}
+
+.sellerCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s;
+}
+
+.sellerCard:hover {
+  transform: translateX(4px);
+}
+
+.sellerInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sellerAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent, #0070f3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sellerName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a1a);
+  margin-bottom: 0.25rem;
+}
+
+.sellerLink {
+  font-size: 0.9375rem;
+  color: var(--accent, #0070f3);
+  font-weight: 500;
+}
+

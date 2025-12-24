@@ -44,7 +44,7 @@ export function CreateRaffleForm() {
     mutationFn: createRaffle,
     onSuccess: (data) => {
       toast.success("Розіграш створено! Очікуйте модерації.");
-      qc.invalidateQueries({ queryKey: queryKeys.raffles.all() });
+      qc.invalidateQueries({ queryKey: queryKeys.raffles.list() });
       router.push("/dashboard");
       router.refresh();
     },

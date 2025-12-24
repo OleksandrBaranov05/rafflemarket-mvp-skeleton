@@ -351,9 +351,11 @@ let users: User[] = [
     id: "u_demo",
     email: "demo@demo.com",
     passwordHash: hashPassword("password"), // password
-    role: "seller",
+    role: "user",
     name: "Демо Користувач",
     avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
+    canSell: true, // Увімкнений режим продавця
+    balance: 15000, // Початковий баланс
     createdAt: new Date(Date.now() - 86400000 * 30).toISOString(),
     updatedAt: new Date(Date.now() - 86400000 * 30).toISOString(),
   },
@@ -364,6 +366,7 @@ let users: User[] = [
     role: "admin",
     name: "Адмін",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+    balance: 50000, // Баланс адміна
     createdAt: new Date(Date.now() - 86400000 * 30).toISOString(),
     updatedAt: new Date(Date.now() - 86400000 * 30).toISOString(),
   },
@@ -472,7 +475,7 @@ export const mockDb = {
       users.push(newUser);
       return newUser;
     },
-    update: (id: string, updates: Partial<Pick<User, "name" | "avatarUrl">>): User | null => {
+    update: (id: string, updates: Partial<Pick<User, "name" | "avatarUrl" | "canSell" | "balance">>): User | null => {
       const idx = users.findIndex((u) => u.id === id);
       if (idx === -1) return null;
       users[idx] = {

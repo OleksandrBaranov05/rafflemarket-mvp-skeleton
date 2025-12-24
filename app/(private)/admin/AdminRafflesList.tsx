@@ -24,7 +24,7 @@ export function AdminRafflesList({ raffles }: Props) {
       updateRaffleStatus(id, { status }),
     onSuccess: () => {
       toast.success("Статус оновлено");
-      qc.invalidateQueries({ queryKey: queryKeys.raffles.all() });
+      qc.invalidateQueries({ queryKey: queryKeys.raffles.list() });
       router.refresh();
     },
     onError: (err: unknown) => {

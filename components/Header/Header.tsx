@@ -10,6 +10,7 @@ import { queryKeys } from "@/lib/utils/queryKeys";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { Loader } from "../Loader/Loader";
+import { UserProfile } from "./UserProfile";
 
 export function Header() {
   const router = useRouter();
@@ -72,12 +73,7 @@ export function Header() {
             </span>
           ) : meQuery.data?.user ? (
             <>
-              <Link className={styles.link} href="/dashboard" onClick={closeMobileMenu}>
-                Кабінет
-              </Link>
-              <Link className={styles.link} href="/profile" onClick={closeMobileMenu}>
-                Профіль
-              </Link>
+              <UserProfile />
               <button
                 className={styles.btn}
                 onClick={() => {

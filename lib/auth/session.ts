@@ -10,6 +10,8 @@ export type SessionUser = {
   role: "user" | "seller" | "admin";
   name?: string;
   avatarUrl?: string;
+  canSell?: boolean; // Можливість продавати (перемикач в профілі)
+  balance?: number; // Баланс користувача в гривнях
 };
 
 export type Session = {

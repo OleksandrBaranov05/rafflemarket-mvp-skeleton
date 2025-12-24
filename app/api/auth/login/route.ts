@@ -17,15 +17,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ message: "Невірний email або пароль" }, { status: 401 });
   }
 
-  const cookieValue = createSessionCookie({
-    user: {
-      id: user.id,
-      email: user.email,
-      role: user.role,
-      name: user.name,
-      avatarUrl: user.avatarUrl,
-    },
-  });
+    const cookieValue = createSessionCookie({
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+        name: user.name,
+        avatarUrl: user.avatarUrl,
+        canSell: user.canSell,
+        balance: user.balance,
+      },
+    });
 
   const res = NextResponse.json({ ok: true } as const);
   res.cookies.set(sessionCookieOptions.name, cookieValue, sessionCookieOptions);

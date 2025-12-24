@@ -1,0 +1,34 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.authRequired {
+  padding: 2rem;
+  text-align: center;
+  background: var(--bg-secondary, #f9f9f9);
+  border-radius: 8px;
+}
+
+.loginButton {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent, #0070f3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.loginButton:hover {
+  background: #0051cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+}
+

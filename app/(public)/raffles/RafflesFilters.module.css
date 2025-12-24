@@ -57,6 +57,7 @@
   gap: 0.5rem;
   flex: 1;
   min-width: 150px;
+  max-width: 100%;
 }
 
 .label {
@@ -79,6 +80,60 @@
 .select:focus {
   outline: none;
   border-color: var(--accent, #0070f3);
+}
+
+.priceRange {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.priceInput {
+  flex: 1;
+  min-width: 0;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: var(--bg-card, #fff);
+  color: var(--text-primary, #1a1a1a);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.priceInput:focus {
+  outline: none;
+  border-color: var(--accent, #0070f3);
+}
+
+.priceInput::placeholder {
+  color: var(--text-secondary, #999);
+}
+
+.priceSeparator {
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.resetBtn {
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-secondary, #f5f5f5);
+  color: var(--text-primary, #1a1a1a);
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 1rem;
+}
+
+.resetBtn:hover {
+  background: var(--border, #e5e5e5);
+  border-color: var(--text-secondary, #999);
 }
 
 /* Tablet and up */

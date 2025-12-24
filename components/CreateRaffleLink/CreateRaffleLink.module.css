@@ -1,0 +1,121 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal {
+  background: var(--bg-card, #fff);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-secondary, #666);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.closeBtn:hover {
+  background: var(--bg-secondary, #f5f5f5);
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.modalText {
+  font-size: 1rem;
+  color: var(--text-secondary, #666);
+  margin: 0 0 2rem 0;
+  line-height: 1.6;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.loginBtn,
+.registerBtn {
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.2s;
+  display: block;
+}
+
+.loginBtn {
+  background: var(--accent, #0070f3);
+  color: white;
+}
+
+.loginBtn:hover {
+  background: #0051cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+}
+
+.registerBtn {
+  background: var(--bg-secondary, #f5f5f5);
+  color: var(--text-primary, #1a1a1a);
+  border: 1px solid var(--border, #e5e5e5);
+}
+
+.registerBtn:hover {
+  background: var(--border, #e5e5e5);
+}
+
+@media (max-width: 767px) {
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+}
+

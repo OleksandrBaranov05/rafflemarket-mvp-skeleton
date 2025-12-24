@@ -1,11 +1,15 @@
 "use client";
 
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTicketsByUser } from "@/lib/api/tickets/getByUser";
 import { queryKeys } from "@/lib/utils/queryKeys";
 import { me } from "@/lib/api/auth/me";
 import { BuyTicketsForm } from "./BuyTicketsForm";
+import { AuthRequiredModal } from "@/components/AuthRequiredModal/AuthRequiredModal";
+import { Loader } from "@/components/Loader/Loader";
 import type { Raffle } from "@/lib/types/raffle";
+import styles from "./BuyTicketsFormWrapper.module.css";
 
 type Props = {
   raffle: Raffle;
@@ -13,7 +17,9 @@ type Props = {
 };
 
 export function BuyTicketsFormWrapper({ raffle, ticketsAvailable }: Props) {
-  const { data: userData } = useQuery({
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  
+  const { data: userData, isLoading } = useQuery({
     queryKey: queryKeys.auth.me(),
     queryFn: me,
   });
@@ -26,6 +32,34 @@ export function BuyTicketsFormWrapper({ raffle, ticketsAvailable }: Props) {
     },
     enabled: !!userData?.user,
   });
+
+  if (isLoading) {
+    return (
+      <div className={styles.loading}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!userData?.user) {
+    return (
+      <>
+        <div className={styles.authRequired}>
+          <p>Для купівлі квитків необхідно увійти в систему.</p>
+          <button
+            className={styles.loginButton}
+            onClick={() => setShowAuthModal(true)}
+          >
+            Увійти або зареєструватися
+          </button>
+        </div>
+        <AuthRequiredModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+        />
+      </>
+    );
+  }
 
   const userTicketsCount =
     ticketsData?.tickets?.filter((t) => t.raffleId === raffle.id).length || 0;

@@ -1,5 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { generatePageMetadata } from "@/lib/metadata/generatePageMetadata";
 import { BuyTicketsFormWrapper } from "./BuyTicketsFormWrapper";
 import { MyTicketsWrapper } from "./MyTicketsWrapper";
 import { LiveTicketCounter } from "./LiveTicketCounter";
@@ -17,6 +20,28 @@ async function getRaffle(id: string) {
   } catch {
     return null;
   }
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const data = await getRaffle(id);
+
+  if (!data || !data.raffle) {
+    return generatePageMetadata({
+      title: "Лот не знайдено",
+      description: "Запитуваний лот не існує",
+    });
+  }
+
+  const { raffle } = data;
+  const progressPercent = Math.round((raffle.ticketsSold / raffle.totalTickets) * 100);
+
+  return generatePageMetadata({
+    title: raffle.title,
+    description: `${raffle.description.substring(0, 150)}... Ціна квитка: ${raffle.ticketPrice} ₴. Продано ${raffle.ticketsSold} з ${raffle.totalTickets} квитків (${progressPercent}%)`,
+    image: raffle.imageUrl,
+    type: "article",
+  });
 }
 
 export default async function RaffleDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -66,6 +91,21 @@ export default async function RaffleDetailPage({ params }: { params: Promise<{ i
           <div className={styles.description}>
             <h2 className={styles.sectionTitle}>Опис</h2>
             <p>{raffle.description}</p>
+          </div>
+
+          <div className={styles.sellerSection}>
+            <h2 className={styles.sectionTitle}>Продавець</h2>
+            <Link href={`/profile/${raffle.sellerId}`} className={styles.sellerCard}>
+              <div className={styles.sellerInfo}>
+                <div className={styles.sellerAvatar}>
+                  {raffle.sellerEmail[0].toUpperCase()}
+                </div>
+                <div>
+                  <div className={styles.sellerName}>{raffle.sellerEmail}</div>
+                  <div className={styles.sellerLink}>Переглянути профіль →</div>
+                </div>
+              </div>
+            </Link>
           </div>
 
           <div className={styles.stats}>

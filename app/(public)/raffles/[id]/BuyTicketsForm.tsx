@@ -37,7 +37,8 @@ export function BuyTicketsForm({ raffle, ticketsAvailable, userTicketsCount = 0 
     onSuccess: (data) => {
       toast.success(`Успішно придбано ${data.tickets.length} квитків!`);
       qc.invalidateQueries({ queryKey: queryKeys.raffles.detail(raffle.id) });
-      qc.invalidateQueries({ queryKey: queryKeys.raffles.all() });
+      qc.invalidateQueries({ queryKey: queryKeys.raffles.list() });
+      router.push("/confirm/payment");
       router.refresh();
     },
     onError: (err: unknown) => {
